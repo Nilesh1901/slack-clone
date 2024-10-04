@@ -11,12 +11,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { SignInFlow } from "../types";
+import { useState } from "react";
 
 interface SignUpCardProp {
   setState: (state: SignInFlow) => void;
 }
 
 function SignUpCard({ setState }: SignUpCardProp) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   return (
     <Card className="w-full h-full p-8">
       <CardHeader className="px-0 pt-0">
@@ -30,25 +34,25 @@ function SignUpCard({ setState }: SignUpCardProp) {
           <Input
             disabled={false}
             type="email"
-            onChange={() => {}}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
-            value=""
             required
           />
           <Input
             disabled={false}
             type="password"
-            onChange={() => {}}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            value=""
             required
           />
           <Input
             disabled={false}
             type="password"
-            onChange={() => {}}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder="Confirm password"
-            value=""
             required
           />
           <Button type="submit" className="w-full" size={"lg"}>
@@ -84,7 +88,7 @@ function SignUpCard({ setState }: SignUpCardProp) {
             onClick={() => setState("signIn")}
             className="text-sky-700 hover:underline cursor-pointer"
           >
-            Login
+            Log in
           </span>
         </p>
       </CardContent>
